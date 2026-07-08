@@ -50,7 +50,10 @@ app.get("/findSummation/:number1/:number2", (req, res) => {
 app.get("/sayHello", (req, res) => {
     console.log(req.body)
 
-    res.send(`Hello ${req.body.name}`)
+    // Query parameters
+    // http://localhost:3000/sayHello?age=50
+    console.log(req.query);
+    res.send(`Hello ${req.body.name}, Age is: ${req.query.age}`);
 });
 
 // Query parameters
