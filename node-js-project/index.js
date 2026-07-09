@@ -7,19 +7,27 @@ app.use(express.json());
 // "/hello" is the Path 
 app.get("/hello", (req, res) => {
     //res.send("hello");
-    //res.send("<h1>Hello World</h1>");
+    res.send("<h1>Hello World</h1>");
 
-    // __dirname is a global variable that contains the path to the current directory
-    res.sendFile(__dirname + "/views/numbers.html");
+    
 })
 
-app.get("/hi", (req, res) => {
+app.get("/numbers", (req, res) => {
     let numbers = "";
     for (let i = 0; i <= 100; i++) {
         numbers += i + " - ";
     }
 
-    res.send(`The numbers are ${numbers}`);
+    //res.send(`The numbers are ${numbers}`);
+
+    // __dirname is a global variable that contains the path to the current directory
+    // res.sendFile(__dirname + "/views/numbers.html");
+
+    // res.render() will look for the file in the views folder.
+    res.render("numbers.ejs", {
+        name: "Ademozi",
+        numbers: numbers
+    });
 })
 
 // When you visit the /addComment route, it will notwork because the method is POST, not GET.
