@@ -25,7 +25,7 @@ app.get("/numbers", (req, res) => {
 
     // res.render() will look for the file in the views folder.
     res.render("numbers.ejs", {
-        name: "Ademozi",
+        name: "Adem",
         numbers: numbers
     });
 })

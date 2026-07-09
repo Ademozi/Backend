@@ -7,11 +7,19 @@
 </head>
 <body>
     <h1>Hello <%= name %> </h1>
+
     <p>hhhhhhhhhhhhh</p>
+    
     <p
-    style="background: orange;
-    padding: 10px;
-    border-radius: 10px;"
-    >The numbers are: <%= numbers %></p>
+        style="background: orange;
+        padding: 10px;
+        border-radius: 10px;"
+        >The numbers are: <%= numbers %>
+    </p>
+
+    <% if (name === "Adem") { %>
+        <div> Name Is Adem </div>
+    <% } %>
+
 </body>
 </html>
