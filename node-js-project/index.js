@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose'); 
+require("dotenv").config();
 const app = express();
 app.use(express.json());
 const Article = require("./models/Article.js");
@@ -7,7 +8,7 @@ const Article = require("./models/Article.js");
 // mongodb+srv://ademozi:AdemMr06@nodejs-course-cluster.ahlp5uv.mongodb.net/?appName=nodejs-course-Cluster
 // promises
 mongoose
-    .connect("mongodb+srv://ademozi:AdemMr06@nodejs-course-cluster.ahlp5uv.mongodb.net/?appName=nodejs-course-Cluster")
+    .connect(process.env.MONGODB_URI)
     .then(() => {
         console.log("connected successfully")
     }).catch((error) => {
