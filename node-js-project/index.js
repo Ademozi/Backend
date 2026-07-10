@@ -1,6 +1,18 @@
 const express = require('express');
+const mongoose = require('mongoose'); 
 const app = express();
 app.use(express.json());
+const Article = require("./models/Article.js");
+
+// mongodb+srv://ademozi:AdemMr06@nodejs-course-cluster.ahlp5uv.mongodb.net/?appName=nodejs-course-Cluster
+// promises
+mongoose
+    .connect("mongodb+srv://ademozi:AdemMr06@nodejs-course-cluster.ahlp5uv.mongodb.net/?appName=nodejs-course-Cluster")
+    .then(() => {
+        console.log("connected successfully")
+    }).catch((error) => {
+        console.log("error with connecting with the DB", error)
+    })
 
 // This called a route handler. It is a function that will run when the user visits the /hello route.
 // the function has two parameters (request, response)
@@ -76,12 +88,14 @@ app.get("/sayHello", (req, res) => {
     });
 });
 
-// Query parameters
-
+// ====== Article Endpoints ======
+app.post("/articles", (req, res) => {
+    res.send("Articles");
+})
 
 
 
 app.listen(3000, () => {
     console.log("I am listening on port 3000")
 });
-// 54:13
+// 2:01
