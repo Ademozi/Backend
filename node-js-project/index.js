@@ -113,6 +113,21 @@ app.get("/articles", async (req, res) => {
     res.json(articles);
 });
 
+app.get("/articles/:articleId", async (req, res) => {
+    const id = req.params.articleId;
+
+    // The best practice is the use try/catch in every async/await 
+    try {
+        const article = await Article.findById(id);
+        res.json(article);
+        return;
+    } catch (error) {
+        console.log("error while reading article of id ", id);
+        return res.send("error");
+    }
+    
+    
+});
 
 
 app.listen(3000, () => {
