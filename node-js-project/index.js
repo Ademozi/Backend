@@ -92,15 +92,26 @@ app.get("/sayHello", (req, res) => {
 // ====== ARTICLES ENDPOINTS ======
 app.post("/articles", async (req, res) => {
     const newArticle = new Article();
-    newArticle.title = "My first article";
-    newArticle.body = "This is the body";
+
+    const artTitle = req.body.articleTitle;
+    const artBody = req.body.articleBody;
+
+    newArticle.title = artTitle;
+    newArticle.body = artBody;
     newArticle.numberOfLikes = 100;
     // Save the new article to the database
     // await is used because save() is an asynchronous function that returns a promise.
     await newArticle.save();
 
-    res.send("the article is saved successfully");
-})
+    res.json({
+        message: "the article is saved successfully"
+    });
+});
+
+app.get("/articles", async (req, res) => {
+    const articles = await Article.find()
+    res.json(articles);
+});
 
 
 
