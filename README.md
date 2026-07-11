@@ -65,3 +65,14 @@ Each file has one responsibility.
 ### data/products.js
 * Store data (for now)
 
+---
+
+# What is Mongoose?
+
+Remember what the PDF said?
+
+Use an ORM.
+
+For MongoDB, Mongoose is technically an ODM (Object Document Mapper), but it serves the same purpose: 
+it lets you work with JavaScript objects instead of writing raw MongoDB commands everywhere.
+
