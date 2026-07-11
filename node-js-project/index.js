@@ -124,13 +124,25 @@ app.get("/articles/:articleId", async (req, res) => {
     } catch (error) {
         console.log("error while reading article of id ", id);
         return res.send("error");
-    }
-    
-    
+    } 
+});
+
+app.delete("/articles/:articleId", async (req, res) => {
+    const id = req.params.articleId;
+
+    // The best practice is the use try/catch in every async/await 
+    try {
+        const article = await Article.findByIdAndDelete(id);
+        res.json(article);
+        return;
+    } catch (error) {
+        console.log("error while reading article of id ", id);
+        return res.json(error);
+    } 
 });
 
 
 app.listen(3000, () => {
     console.log("I am listening on port 3000")
 });
-// 2:01
+// 2:27
