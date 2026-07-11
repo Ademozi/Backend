@@ -141,6 +141,14 @@ app.delete("/articles/:articleId", async (req, res) => {
     } 
 });
 
+app.get("/showArticles", async (req, res) => {
+    const articles = await Article.find()
+
+    res.render("articles.ejs", {
+        allArticles: articles
+    });
+});
+
 
 app.listen(3000, () => {
     console.log("I am listening on port 3000")
